@@ -3,70 +3,77 @@
 ## Задача 1 
 **Условие:** Дан IP-адрес `192.168.10.50` и маска `255.255.255.0`. Найдите адрес сети и широковещательный адрес.  
 **Решение:**
-
-    from ipaddress import *
-    net = ip_network('192.168.10.50/255.255.255.0', 0)
-    print(net[0]) # 192.168.10.0
-    print(net[-1]) # 192.168.10.255
+```python
+from ipaddress import *
+net = ip_network('192.168.10.50/255.255.255.0', 0)
+print(net[0]) # 192.168.10.0
+print(net[-1]) # 192.168.10.255
+```
 
 ## Задача 2
 **Условие:** В сети используется маска `255.255.255.240`. Сколько устройств можно подключить?  
 **Решение:**
 
-    from ipaddress import *
-    net = ip_network('192.168.0.0/255.255.255.240', 0)
-    print(net.num_addresses - 2) # 14
+```python
+from ipaddress import *
+net = ip_network('192.168.0.0/255.255.255.240', 0)
+print(net.num_addresses - 2) # 14
+```
 
 ## Задача 3
 **Условие:** Найдите количество IP-адресов в сети `192.168.0.0/24`, у которых количество единиц в двух правых байтах равно количеству единиц в двух левых байтах.  
-**Решение:**  
+**Решение:**
+```python
+from ipaddress import *
 
-    from ipaddress import *
-    
-    net = ip_network('192.168.0.0/24', 0)
-    count = 0
-    
-    for ip in net:
-        ip_b = f'{ip:b}'
-        if ip_b[:16].count('1') == ip_b[16:].count('1'):
-            count += 1
+net = ip_network('192.168.0.0/24', 0)
+count = 0
 
-    print(count) # 2
+for ip in net:
+    ip_b = f'{ip:b}'
+    if ip_b[:16].count('1') == ip_b[16:].count('1'):
+        count += 1
+
+print(count) # 2
+```
 
 ## Задача 4 
 **Условие:** Дан IP-адрес `10.0.0.15` и маска `/28`. Найдите широковещательный адрес.  
 **Решение:**  
-
-    from ipaddress import *
-    net = ip_network('10.0.0.15/28', 0)
-    print(net[-1) # 10.0.0.15
+```python
+from ipaddress import *
+net = ip_network('10.0.0.15/28', 0)
+print(net[-1]) # 10.0.0.15
+```
 
 ## Задача 5   
 **Условие:** Для сети с IP-адресом узла `192.168.1.100` и маской `255.255.255.x` известно, что в ней ровно 30 устройств. Найдите `x`.  
 **Решение:**  
+```python
+from ipaddress import *
 
-    from ipaddress import *
-    
-    # 30 хостов = 32 адреса всего (2^5). Значит, под хост отводится 5 бит.
-    # В маске /27 последние 5 бит нулевые. Последний октет: 256 - 32 = 224.
-    for m in range(33):
-        net = ip_network(f'192.168.1.100/{m}', 0)
-        if len(net) - 2 == 30:
-            print(net.netmask) # 255.255.255.224
-            break
+# 30 хостов = 32 адреса всего (2^5). Значит, под хост отводится 5 бит.
+# В маске /27 последние 5 бит нулевые. Последний октет: 256 - 32 = 224.
+for m in range(33):
+    net = ip_network(f'192.168.1.100/{m}', 0)
+    if len(net) - 2 == 30:
+        print(net.netmask) # 255.255.255.224
+        break
+```
 
 ## Задача 6
 **Условие:** Найдите количество IP-адресов в сети `10.0.0.0/24`, у которых последние 2 бита равны `01`.  
 **Решение:**  
+```python
+from ipaddress import *
 
-    from ipaddress import *
-    
-    net = ip_network('10.0.0.0/24', 0)
-    count = 0
-    
-    for ip in net:
-        ip_b = f'{ip:b}'
-        if ip_b[-2:] == '01':
-            count += 1
-            
-    print(count) # 64
+net = ip_network('10.0.0.0/24', 0)
+count = 0
+
+for ip in net:
+    ip_b = f'{ip:b}'
+    if ip_b[-2:] == '01':
+        count += 1
+        
+print(count) # 64
+```
