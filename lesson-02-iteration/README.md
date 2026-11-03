@@ -89,6 +89,7 @@
     for a, b, c in zip(nums, nums[1:], nums[2:]):
         print(a, b, c)
 
-## Задачи
+## Дополнительные материалы
 
-Решите практические задачи к этому уроку: [TASKS.md](TASKS.md)
+Готовые примеры кода для запуска [main.py](main.py)  
+Задачи: [TASKS.md](TASKS.md)
