@@ -3,72 +3,72 @@
 ## Задача 1
 **Условие:** Дано число `123456789`. Найдите сумму его цифр.  
 **Решение:**
-
-    n = 123456789
-    total = sum(int(el) for el in str(n))
-    print(total) # 45
-
+```python
+n = 123456789
+total = sum(int(el) for el in str(n))
+print(total) # 45
+```
 ## Задача 2
 **Условие:** Дан список `[12, 7, 4, 9, 22, 15]`. Найдите сумму только чётных чисел.  
 **Решение:**
-
-    numbers = [12, 7, 4, 9, 22, 15]
-    total = sum(x for x in numbers if x % 2 == 0)
-    print(total) # 38 (12 + 4 + 22)
-
+```python
+numbers = [12, 7, 4, 9, 22, 15]
+total = sum(x for x in numbers if x % 2 == 0)
+print(total) # 38 (12 + 4 + 22)
+```
 ## Задача 3
 **Условие:** Дан список `[15, 23, 45, 52, 85, 90]`. Посчитайте, сколько чисел оканчиваются на 5.  
 **Решение:**
-
-    numbers = [15, 23, 45, 52, 85, 90]
-    count = sum(1 for x in numbers if x % 10 == 5)
-    print(count) # 3 (15, 45, 85)
-
+```python
+numbers = [15, 23, 45, 52, 85, 90]
+count = sum(1 for x in numbers if x % 10 == 5)
+print(count) # 3 (15, 45, 85)
+```
 ## Задача 4
 **Условие:** Дана строка `'11010110'`, представляющая собой двоичное число. Найдите количество единиц в ней.  
 **Решение:**
-
-    nb = '11010110'
-    count_ones = nb.count('1')
-    print(count_ones) # 5
-
+```python
+nb = '11010110'
+count_ones = nb.count('1')
+print(count_ones) # 5
+```
 
 ## Задача 5
 **Условие:** Найдите сумму чисел списка, которые оканчиваются на 3.  
 **Решение:**
-
-    numbers = [13, 23, 30, 43, 52, 63]
-    total = sum(x for x in numbers if x % 10 == 3)
-    print(total) # 142 (13 + 23 + 43 + 63)
-
+```python
+numbers = [13, 23, 30, 43, 52, 63]
+total = sum(x for x in numbers if x % 10 == 3)
+print(total) # 142 (13 + 23 + 43 + 63)
+```
 ## Задача 6
 **Условие:** Посчитайте количество гласных букв (а, е, ё, и, о, у, ы, э, ю, я) в слове.    
 **Решение:**
-
-    word = 'информатика'
-    vowels = 'аеёиоуыэюя'
-    count = sum(1 for char in word if char in vowels)
-    print(count) # 5 (и, о, а, и, а)
-
+```python
+word = 'информатика'
+vowels = 'аеёиоуыэюя'
+count = sum(1 for char in word if char in vowels)
+print(count) # 5 (и, о, а, и, а)
+```
 
 ## Задача 7
 **Условие:** Увеличьте каждое чётное число в списке в два раза, не создавая новый список (измените текущий).    
 **Решение:**
-
-    numbers = [1, 2, 3, 4, 5]
-    for i in range(len(numbers)):
-        if numbers[i] % 2 == 0:
-            numbers[i] *= 2
-    print(numbers) # [1, 4, 3, 8, 5]
-
+```python
+numbers = [1, 2, 3, 4, 5]
+for i in range(len(numbers)):
+    if numbers[i] % 2 == 0:
+        numbers[i] *= 2
+print(numbers) # [1, 4, 3, 8, 5]
+```
 ## Задача 8
 **Условие:** Посчитайте, сколько пар одинаковых соседних элементов в строке.    
 **Решение:**
-
-    s = 'AABBBCCD'
-    count = 0
-    for a, b in zip(s, s[1:]):
-        if a == b:
-            count += 1
-    print(count) # 3 (AA, BB, BB)
-
+```python
+s = 'AABBBCCD'
+count = 0
+for a, b in zip(s, s[1:]):
+    if a == b:
+        count += 1
+print(count) # 3 (AA, BB, BB)
+```

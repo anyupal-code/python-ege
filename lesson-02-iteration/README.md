@@ -23,34 +23,35 @@
 Синтаксис: `[действие for элемент in последовательность if условие]`
 
 **Пример:**
+```python
+numbers = [1, 2, 3, 4, 5, 6]
 
-    numbers = [1, 2, 3, 4, 5, 6]
+# Полный код через for
+squares = []
+for x in numbers:
+    if x % 2 == 0:
+        squares.append(x * x)
 
-    # Полный код через for
-    squares = []
-    for x in numbers:
-        if x % 2 == 0:
-            squares.append(x * x)
-
-    # Сокращенный код (генератор)
-    squares = [x * x for x in numbers if x % 2 == 0]
-
+# Сокращенный код (генератор)
+squares = [x * x for x in numbers if x % 2 == 0]
+```
 ## Перебор пар, троек
 
 Перебор пар, троек (задача #17) лучше через `zip`. Это безопаснее (нет выхода за границы) и короче:
-
-    for a, b in zip(s, s[1:]):
-        if a == b:
-            print('Пара:', a, b)
-
+```python
+s = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+for a, b in zip(s, s[1:]):
+    if a == b:
+        print('Пара:', a, b)
+```
 ## Перебор по индексу
 
 Иногда нужно обратиться не к самому элементу, а к его позиции. Для этого используют перебор по индексу (`i`) через `range(len(...))`:
-
-    s = 'Hello'
-    for i in range(len(s)):
-        print(i, s[i])
-
+```python
+s = 'Hello'
+for i in range(len(s)):
+    print(i, s[i])
+```
 **Когда использовать:**
 - Если нужно **изменить** элемент в списке на месте (в Python цикл `for x in s` создает копию, а `s[i] = ...` меняет оригинал).
 - В задачах на два указателя (например, задание 24), где мы двигаем левый (`L`) и правый (`R`) указатели по индексам.
@@ -58,37 +59,38 @@
 ## Примеры
 
 **Сумма цифр числа:**
-
-    n = 12345
-    total = sum(int(el) for el in str(n)) # 15
-
+```python
+n = 12345
+total = sum(int(el) for el in str(n)) # 15
+```
 **Сумма чётных чисел в списке:**
-
-    numbers = [1, 2, 3, 4, 5, 6]
-    total = sum(x for x in numbers if x % 2 == 0) # 12
-
+```python
+numbers = [1, 2, 3, 4, 5, 6]
+total = sum(x for x in numbers if x % 2 == 0) # 12
+```
 **Количество чётных чисел (два способа):**
+```python
+# Вариант 1 (быстрый, без выделения памяти)
+numbers = [1, 2, 3, 4, 5, 6]
+count = sum(1 for x in numbers if x % 2 == 0) # 3
 
-    # Вариант 1 (быстрый, без выделения памяти)
-    count = sum(1 for x in numbers if x % 2 == 0) # 3
-
-    # Вариант 2 (через len, медленнее на больших данных)
-    count = len([x for x in numbers if x % 2 == 0]) # 3
-
+# Вариант 2 (через len, медленнее на больших данных)
+count_len = len([x for x in numbers if x % 2 == 0]) # 3
+```
 **Сумма цифр двоичного числа (два способа):**
+```python
+nb = '10101111'
+total = sum(int(el) for el in nb) # 6
 
-    nb = '10101111'
-    total = sum(int(el) for el in nb) # 6
-    
-    # Изящный вариант (количество единиц):
-    count_ones = nb.count('1') # 6 
-
+# Изящный вариант (количество единиц):
+count_ones = nb.count('1') # 6 
+```
 **Перебор всех троек списка:**
-
-    nums = [1, 2, 3, 4, 5]
-    for a, b, c in zip(nums, nums[1:], nums[2:]):
-        print(a, b, c)
-
+```python
+nums = [1, 2, 3, 4, 5]
+for a, b, c in zip(nums, nums[1:], nums[2:]):
+    print(a, b, c)
+```
 ## Дополнительные материалы
 
 Готовые примеры кода для запуска [main.py](main.py)  
