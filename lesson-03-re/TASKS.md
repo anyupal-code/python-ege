@@ -14,8 +14,8 @@
 from re import findall
 
 s = open("task_1.txt").readline()
-num = r"([6789][06789]*|0)"
-reg = rf"{num}([-*]{num})+" 
+num = r"(?:[6789][06789]*|0)"
+reg = rf"{num}(?:[-*]{num})+" 
 matches = findall(reg, s)
 print(max(len(el) for el in matches))# 154
 ```
@@ -23,7 +23,7 @@ print(max(len(el) for el in matches))# 154
 **Разбор:**
 
 - `num = r"([6789][06789]*|0)"` — «правильное» число: либо начинается с `6–9` и продолжается любыми цифрами из `0, 6–9`, либо это просто `0`.
-- `reg = rf"{num}([-*]{num})+"` — выражение: число, затем один или более фрагментов «операция + число».
+- `reg = rf"{num}(?:[-*]{num})+"` — выражение: число, затем один или более фрагментов «операция + число».
 - `findall` возвращает список объекты совпадений, `(max(len(el) for el in matches))` выбирает самое длинное.
 
 ___
@@ -41,7 +41,7 @@ ___
 from re import findall
 
 s = open("task_2.txt").readline().strip()
-matches = findall(r'[0-9A-D]*[02468AC]', s)
+matches = findall(r'(?:[0-9A-D]*[02468AC])', s)
 print(max(len(m) for m in matches))  # 2598
 # Сознательно не проверяем 0, 2, 4, ... - нужно максимальное число
 ```
